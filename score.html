@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Score - EitoSystems</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- PC用ヘッダー -->
+        <header class="pc-header">
+            <h1 class="glow-text">EitoSystems</h1>
+            <nav class="pc-nav">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="links.html">Links</a></li>
+                    <li><a href="score.html" class="active">Score</a></li>
+                    <li><a href="downloader.html">Downloader</a></li>
+                    <li><a href="webbar.html">WebBar</a></li>
+                    <li><a href="tool.html">Tool</a></li>
+                    <li><a href="index.html">LogOut</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <!-- スマホ用3点リーダー -->
+        <div class="mobile-menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        
+        <!-- スマホ用メニュー -->
+        <div class="mobile-menu">
+            <div class="mobile-menu-header">
+                <h2>メニュー</h2>
+            </div>
+            <nav class="mobile-nav">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="links.html">Links</a></li>
+                    <li><a href="score.html" class="active">Score</a></li>
+                    <li><a href="downloader.html">Downloader</a></li>
+                    <li><a href="webbar.html">WebBar</a></li>
+                    <li><a href="tool.html">Tool</a></li>
+                    <li><a href="index.html">LogOut</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <main>
+            <div class="content-box">
+                <h2 class="glow-text">Score</h2>
+                
+                <!-- スプレッドシート連携セクション -->
+                <div class="score-container">
+                    <div class="score-header">
+                        <h3><i class="fas fa-table"></i> スコア一覧</h3>
+                        <div class="score-controls">
+                            <button id="refresh-btn" class="score-btn">
+                                <i class="fas fa-sync-alt"></i> 更新
+                            </button>
+                            <div class="score-filter">
+                                <select id="filter-select">
+                                    <option value="all">すべて</option>
+                                    <option value="recent">最近のスコア</option>
+                                    <option value="highest">最高スコア</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- スコアテーブル -->
+                    <div class="score-table-container">
+                        <table id="score-table" class="score-table">
+                            <thead>
+                                <tr>
+                                    <th>日付</th>
+                                    <th>タイトル</th>
+                                    <th>スコア</th>
+                                    <th>詳細</th>
+                                </tr>
+                            </thead>
+                            <tbody id="score-table-body">
+                                <!-- データはJavaScriptで動的に追加されます -->
+                                <tr>
+                                    <td colspan="4" class="loading-message">データを読み込み中...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- エラーメッセージ -->
+                    <div id="error-message" class="error-message" style="display: none;">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span>データの読み込みに失敗しました。後でもう一度お試しください。</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p class="glow-text">&copy; 2024 EitoSystem Product</p>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+    <script src="google-sheets-api.js"></script>
+    <script>
+        // Googleスプレッドシートと連携するための設定
+        document.addEventListener('DOMContentLoaded', function() {
+            // テーブル要素の取得
+            const tableBody = document.getElementById('score-table-body');
+            const refreshBtn = document.getElementById('refresh-btn');
+            const filterSelect = document.getElementById('filter-select');
+            const errorMessage = document.getElementById('error-message');
+            
+            // 更新ボタンのイベントリスナー
+            refreshBtn.addEventListener('click', function() {
+                loadSpreadsheetData();
+            });
+            
+            // フィルターのイベントリスナー
+            filterSelect.addEventListener('change', function() {
+                filterData(this.value);
+            });
+            
+            // 初期データ読み込み
+            loadSpreadsheetData();
+            
+            // スプレッドシートからデータを読み込む関数
+            function loadSpreadsheetData() {
+                // ローディング表示
+                tableBody.innerHTML = '<tr><td colspan="4" class="loading-message">データを読み込み中...</td></tr>';
+                errorMessage.style.display = 'none';
+                
+                console.log('データ読み込み開始');
+                
+                // Google Sheets APIを使用してデータを取得
+                if (window.googleSheetsAPI) {
+                    console.log('Google Sheets APIが利用可能です');
+                    window.googleSheetsAPI.fetchData(function(data, error) {
+                        if (error) {
+                            console.error('データの読み込みに失敗しました:', error);
+                            showError(error.message);
+                            return;
+                        }
+                        
+                        console.log('データ取得成功:', data);
+                        // テーブルにデータを表示
+                        displayData(data);
+                    });
+                } else {
+                    // APIが読み込まれていない場合はモックデータを使用
+                    console.warn('Google Sheets APIが読み込まれていません。モックデータを使用します。');
+                    setTimeout(function() {
+                        const mockData = [
+                            ['2024-05-01', 'プロジェクトA', '85', '詳細を見る'],
+                            ['2024-04-15', 'プロジェクトB', '92', '詳細を見る'],
+                            ['2024-04-01', 'プロジェクトC', '78', '詳細を見る'],
+                            ['2024-03-20', 'プロジェクトD', '88', '詳細を見る'],
+                            ['2024-03-05', 'プロジェクトE', '95', '詳細を見る']
+                        ];
+                        displayData(mockData);
+                    }, 1000);
+                }
+            }
+            
+            // データをテーブルに表示する関数
+            function displayData(data) {
+                console.log('データ表示開始:', data);
+                
+                if (!data || data.length === 0) {
+                    console.log('データが空です');
+                    tableBody.innerHTML = '<tr><td colspan="4" class="no-data-message">データがありません</td></tr>';
+                    return;
+                }
+                
+                let html = '';
+                data.forEach((row, index) => {
+                    console.log(`行 ${index + 1}:`, row);
+                    html += `
+                        <tr>
+                            <td>${row[0] || ''}</td>
+                            <td>${row[1] || ''}</td>
+                            <td>${row[2] || ''}</td>
+                            <td>${row[3] || '詳細'}</td>
+                        </tr>
+                    `;
+                });
+                
+                tableBody.innerHTML = html;
+                console.log('テーブル更新完了');
+            }
+            
+            // データをフィルタリングする関数
+            function filterData(filterType) {
+                console.log('フィルタリング:', filterType);
+                // 実際の実装では、フィルタリングロジックを追加
+                // 例: 最近のスコア、最高スコアなどでフィルタリング
+                loadSpreadsheetData(); // 簡易実装として再読み込み
+            }
+            
+            // エラーメッセージを表示する関数
+            function showError(message) {
+                console.error('エラー表示:', message);
+                tableBody.innerHTML = '';
+                errorMessage.style.display = 'flex';
+                errorMessage.querySelector('span').textContent = message || 'データの読み込みに失敗しました。後でもう一度お試しください。';
+                
+                // エラー情報をクリア
+                const existingInfo = errorMessage.querySelector('.error-info');
+                if (existingInfo) {
+                    existingInfo.remove();
+                }
+                
+                // 404エラーの場合、追加の情報を表示
+                if (message && message.includes('404')) {
+                    const additionalInfo = document.createElement('div');
+                    additionalInfo.className = 'error-info';
+                    additionalInfo.innerHTML = `
+                        <p><strong>トラブルシューティング:</strong></p>
+                        <ol>
+                            <li>スプレッドシートIDが正しいか確認してください</li>
+                            <li>スプレッドシートの共有設定が「リンクを知っている人が閲覧できる」になっているか確認してください</li>
+                            <li>スプレッドシートにデータが入力されているか確認してください</li>
+                        </ol>
+                    `;
+                    errorMessage.appendChild(additionalInfo);
+                }
+                
+                // 400エラーの場合、追加の情報を表示
+                if (message && message.includes('400')) {
+                    const additionalInfo = document.createElement('div');
+                    additionalInfo.className = 'error-info';
+                    additionalInfo.innerHTML = `
+                        <p><strong>トラブルシューティング:</strong></p>
+                        <ol>
+                            <li>スプレッドシートIDの形式が正しいか確認してください</li>
+                            <li>スプレッドシートのシート名が「Sheet1」になっているか確認してください</li>
+                            <li>APIキーが正しく設定されているか確認してください</li>
+                            <li>一時的にモックデータを使用するには、google-sheets-api.jsファイルのUSE_MOCK_DATAをtrueに設定してください</li>
+                        </ol>
+                    `;
+                    errorMessage.appendChild(additionalInfo);
+                }
+            }
+        });
+    </script>
+</body>
+</html> 

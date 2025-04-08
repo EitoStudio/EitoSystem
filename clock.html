@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>デジタル時計 - EitoSystems</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        .clock-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+            text-align: center;
+        }
+        .date {
+            font-size: 18px;
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            margin-bottom: 10px;
+            font-family: 'Share Tech Mono', monospace;
+        }
+        .digital-clock {
+            font-size: 64px;
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            margin: 20px 0;
+            font-family: 'Share Tech Mono', monospace;
+            letter-spacing: 2px;
+        }
+        .fullscreen-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid #00ffff;
+            color: #00ffff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .fullscreen-btn:hover {
+            background: rgba(0, 255, 255, 0.2);
+        }
+        .fullscreen-mode {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .fullscreen-clock {
+            font-size: 120px;
+            color: #00ffff;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
+            font-family: 'Share Tech Mono', monospace;
+            letter-spacing: 4px;
+        }
+        .fullscreen-date {
+            font-size: 36px;
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            margin-bottom: 30px;
+            text-align: center;
+            font-family: 'Share Tech Mono', monospace;
+            letter-spacing: 1px;
+        }
+        .exit-fullscreen {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            color: #00ffff;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .exit-fullscreen:hover {
+            color: #ffffff;
+        }
+        .container.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="main-container">
+        <header class="pc-header">
+            <h1 class="glow-text">EitoSystems</h1>
+            <nav class="pc-nav">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="links.html">Links</a></li>
+                    <li><a href="score.html">Score</a></li>
+                    <li><a href="downloader.html">Downloader</a></li>
+                    <li><a href="webbar.html">WebBar</a></li>
+                    <li><a href="tool.html">Tool</a></li>
+                    <li><a href="index.html">LogOut</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- スマホ用3点リーダー -->
+        <div class="mobile-menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        
+        <!-- スマホ用メニュー -->
+        <div class="mobile-menu">
+            <div class="mobile-menu-header">
+                <h2>メニュー</h2>
+            </div>
+            <nav class="mobile-nav">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="links.html">Links</a></li>
+                    <li><a href="score.html">Score</a></li>
+                    <li><a href="downloader.html">Downloader</a></li>
+                    <li><a href="webbar.html">WebBar</a></li>
+                    <li><a href="tool.html">Tool</a></li>
+                    <li><a href="index.html">LogOut</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <main>
+            <section class="content-box">
+                <h2 class="glow-text">デジタル時計</h2>
+                <div class="clock-container">
+                    <div class="date" id="date">2024年1月1日</div>
+                    <div class="digital-clock" id="clock">00:00:00</div>
+                    <button class="fullscreen-btn" onclick="toggleFullscreen()">
+                        <i class="fas fa-expand"></i> 全画面表示
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p class="glow-text">&copy; 2024 EitoSystem Product</p>
+        </footer>
+    </div>
+
+    <!-- 全画面表示用の要素 -->
+    <div class="fullscreen-mode" id="fullscreen-mode" style="display: none;">
+        <div class="fullscreen-date" id="fullscreen-date">2024年1月1日</div>
+        <div class="fullscreen-clock" id="fullscreen-clock">00:00:00</div>
+        <div class="exit-fullscreen" onclick="toggleFullscreen()">
+            <i class="fas fa-times"></i>
+        </div>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const time = now.toLocaleTimeString('ja-JP', { hour12: false });
+            const date = now.toLocaleDateString('ja-JP', { 
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            document.getElementById('clock').textContent = time;
+            document.getElementById('date').textContent = date;
+            document.getElementById('fullscreen-clock').textContent = time;
+            document.getElementById('fullscreen-date').textContent = date;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // スマホ用メニューの開閉機能
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            
+            menuToggle.addEventListener('click', function() {
+                mobileMenu.classList.toggle('active');
+            });
+        });
+
+        // 全画面表示の切り替え
+        function toggleFullscreen() {
+            const fullscreenMode = document.getElementById('fullscreen-mode');
+            const mainContainer = document.getElementById('main-container');
+            
+            if (fullscreenMode.style.display === 'none') {
+                fullscreenMode.style.display = 'flex';
+                mainContainer.classList.add('hidden');
+                document.body.style.overflow = 'hidden';
+            } else {
+                fullscreenMode.style.display = 'none';
+                mainContainer.classList.remove('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
+</body>
+</html> 

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebBar - EitoSystems</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- PC用ヘッダー -->
+        <header class="pc-header">
+            <h1 class="glow-text">EitoSystems</h1>
+            <nav class="pc-nav">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="links.html">Links</a></li>
+                    <li><a href="score.html">Score</a></li>
+                    <li><a href="downloader.html">Downloader</a></li>
+                    <li><a href="webbar.html" class="active">WebBar</a></li>
+                    <li><a href="tool.html">Tool</a></li>
+                    <li><a href="index.html">LogOut</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <!-- スマホ用3点リーダー -->
+        <div class="mobile-menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        
+        <!-- スマホ用メニュー -->
+        <div class="mobile-menu">
+            <div class="mobile-menu-header">
+                <h2>メニュー</h2>
+            </div>
+            <nav class="mobile-nav">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="links.html">Links</a></li>
+                    <li><a href="score.html">Score</a></li>
+                    <li><a href="downloader.html">Downloader</a></li>
+                    <li><a href="webbar.html" class="active">WebBar</a></li>
+                    <li><a href="tool.html">Tool</a></li>
+                    <li><a href="index.html">LogOut</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <main>
+            <div class="content-box">
+                <h2 class="glow-text">WebBar</h2>
+                
+                <!-- 検索ボックス -->
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="検索...">
+                    <button id="search-button"><i class="fas fa-search"></i></button>
+                </div>
+                
+                <!-- 便利ツールリンク -->
+                <div class="webbar-container">
+                    <div class="webbar-category">
+                        <h3><i class="fas fa-tools"></i> 便利ツール</h3>
+                        <div class="webbar-grid">
+                            <div class="webbar-item">
+                                <h4>お便利ツール</h4>
+                                <p>様々な便利ツール詰め合わせ</p>
+                                <a href="https://www.oh-benri-tools.com/" target="_blank" class="webbar-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="webbar-item">
+                                <h4>3秒敬語</h4>
+                                <p>AIが敬語に変換</p>
+                                <a href="https://3keigo.com/" target="_blank" class="webbar-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="webbar-item">
+                                <h4>ChatPDF</h4>
+                                <p>PDFを解析、チャットで応答</p>
+                                <a href="https://www.chatpdf.com/" target="_blank" class="webbar-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="webbar-item">
+                                <h4>ひらめきメーカー</h4>
+                                <p>単語からアイディアを量産</p>
+                                <a href="https://hirameki.app/" target="_blank" class="webbar-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="webbar-item">
+                                <h4>QRのススメ</h4>
+                                <p>QRコード作成</p>
+                                <a href="https://qr.quel.jp/" target="_blank" class="webbar-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="webbar-item">
+                                <h4>X.gd</h4>
+                                <p>URL短縮</p>
+                                <a href="https://x.gd/" target="_blank" class="webbar-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="webbar-item">
+                                <h4>Remove.bg</h4>
+                                <p>ワンクリック背景透過</p>
+                                <a href="https://www.remove.bg/ja" target="_blank" class="webbar-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="webbar-item">
+                                <h4>MagicStudio</h4>
+                                <p>写真用消しゴム</p>
+                                <a href="https://magicstudio.com/ja/?via=magic-st" target="_blank" class="webbar-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="webbar-item">
+                                <h4>ClipDrop</h4>
+                                <p>画像編集ツール詰め合わせ</p>
+                                <a href="https://clipdrop.co/" target="_blank" class="webbar-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="webbar-item">
+                                <h4>DesignEvo</h4>
+                                <p>エンブレム作成</p>
+                                <a href="https://www.designevo.com/jp/" target="_blank" class="webbar-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="webbar-item">
+                                <h4>Cooltext</h4>
+                                <p>かっこいい文字作成</p>
+                                <a href="https://ja.cooltext.com/" target="_blank" class="webbar-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="webbar-item">
+                                <h4>MapChart</h4>
+                                <p>地図作成</p>
+                                <a href="https://www.mapchart.net/" target="_blank" class="webbar-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="webbar-item">
+                                <h4>地理院地図</h4>
+                                <p>地理院が作成した地図</p>
+                                <a href="https://maps.gsi.go.jp/#5/36.104611/140.084556/&base=std&ls=std&disp=1&vs=c1g1j0h0k0l0u0t0z0r0s0m0f1" target="_blank" class="webbar-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="webbar-item">
+                                <h4>BizOcean</h4>
+                                <p>日本向けOfficeテンプレ配布</p>
+                                <a href="https://www.bizocean.jp/doc/" target="_blank" class="webbar-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="webbar-item">
+                                <h4>送料の虎</h4>
+                                <p>送料計算&確認</p>
+                                <a href="https://www.shipping.jp/" target="_blank" class="webbar-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="webbar-item">
+                                <h4>ロケスマWeb</h4>
+                                <p>チェーン店検索</p>
+                                <a href="https://www.locationsmart.org/" target="_blank" class="webbar-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="webbar-item">
+                                <h4>情報共有Mapくん</h4>
+                                <p>公共施設検索</p>
+                                <a href="https://share-map.net/" target="_blank" class="webbar-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="webbar-item">
+                                <h4>ポストマップ</h4>
+                                <p>全国ポスト検索</p>
+                                <a href="https://www.postmap.org/map" target="_blank" class="webbar-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="webbar-item">
+                                <h4>ガッコム犯罪ナビ</h4>
+                                <p>地図で犯罪確認</p>
+                                <a href="https://www.gaccom.jp/safety/" target="_blank" class="webbar-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="webbar-item">
+                                <h4>地震地図日本</h4>
+                                <p>歴史を遡って地震を確認</p>
+                                <a href="https://vdata.nikkei.com/newsgraphics/earthquake-100years/" target="_blank" class="webbar-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="webbar-item">
+                                <h4>ハザードマップポータル</h4>
+                                <p>全国のハザマプを確認</p>
+                                <a href="https://disaportal.gsi.go.jp/" target="_blank" class="webbar-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="webbar-item">
+                                <h4>Windy</h4>
+                                <p>天候を詳しく確認</p>
+                                <a href="https://www.windy.com/" target="_blank" class="webbar-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="webbar-item">
+                                <h4>用例.JP</h4>
+                                <p>日本語の用例を文学作品から検索</p>
+                                <a href="https://yourei.jp/" target="_blank" class="webbar-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="webbar-item">
+                                <h4>分か分かIT</h4>
+                                <p>IT用語をニュアンスで知る</p>
+                                <a href="https://wa3.i-3-i.info/" target="_blank" class="webbar-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="webbar-item">
+                                <h4>もじまる</h4>
+                                <p>LINEトーク画面作成</p>
+                                <a href="https://www.mojimaru.com/talk/" target="_blank" class="webbar-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="webbar-item">
+                                <h4>TweetGen</h4>
+                                <p>フェイクツイート作成</p>
+                                <a href="https://shashiirk.github.io/fake-tweet-generator/" target="_blank" class="webbar-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="webbar-item">
+                                <h4>CapGen</h4>
+                                <p>reChapchaジェネレーター</p>
+                                <a href="https://tr246.github.io/capgene/" target="_blank" class="webbar-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="webbar-item">
+                                <h4>DevRoom</h4>
+                                <p>有名な画面をフェイク</p>
+                                <a href="https://devroom.azurewebsites.net/" target="_blank" class="webbar-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="webbar-item">
+                                <h4>NANKOMA</h4>
+                                <p>漫画作成ツール</p>
+                                <a href="https://nankoma.com/" target="_blank" class="webbar-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="webbar-item">
+                                <h4>FontMEME</h4>
+                                <p>コンテンツ系フォント</p>
+                                <a href="https://fontmeme.com/" target="_blank" class="webbar-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="webbar-item">
+                                <h4>アニメロゴ genまとめ</h4>
+                                <p>アニメロゴ制作サイトまとめ</p>
+                                <a href="https://crazystudy.info/logo-generator-taikin" target="_blank" class="webbar-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="webbar-item">
+                                <h4>FestiSite</h4>
+                                <p>クレカやお金の偽造</p>
+                                <a href="https://www.festisite.com/money/us_dollar_1/" target="_blank" class="webbar-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="webbar-item">
+                                <h4>FMGEN</h4>
+                                <p>ファンタジー地図を作成</p>
+                                <a href="https://azgaar.github.io/Fantasy-Map-Generator/" target="_blank" class="webbar-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="webbar-item">
+                                <h4>NeoFlames</h4>
+                                <p>銀河生成</p>
+                                <a href="https://29a.ch/sandbox/2011/neonflames/" target="_blank" class="webbar-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="webbar-item">
+                                <h4>PlanetMaker</h4>
+                                <p>惑星作成</p>
+                                <a href="http://planetmaker.apoapsys.com/" target="_blank" class="webbar-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="webbar-item">
+                                <h4>書きプリメーカー</h4>
+                                <p>綺麗な文字練習プリント作成</p>
+                                <a href="https://kakikata.maripo.org/" target="_blank" class="webbar-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="webbar-item">
+                                <h4>相関図作成ツール</h4>
+                                <p>相関図を作成</p>
+                                <a href="https://diagram.jp/" target="_blank" class="webbar-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <p class="glow-text">&copy; 2024 EitoSystem Product</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        // 検索機能の実装
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('search-input');
+            const searchButton = document.getElementById('search-button');
+            const webbarItems = document.querySelectorAll('.webbar-item');
+            
+            // 検索ボタンクリック時の処理
+            searchButton.addEventListener('click', function() {
+                performSearch();
+            });
+            
+            // Enterキー押下時の処理
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+            
+            // 検索実行関数
+            function performSearch() {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                
+                webbarItems.forEach(item => {
+                    const title = item.querySelector('h4').textContent.toLowerCase();
+                    const description = item.querySelector('p').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

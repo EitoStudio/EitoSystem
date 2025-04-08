@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>計算機 - EitoSystems</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .calculator-container {
+            max-width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+        .calculator-display {
+            width: 100%;
+            height: 60px;
+            margin-bottom: 20px;
+            padding: 10px;
+            font-size: 24px;
+            text-align: right;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid #00ffff;
+            color: #00ffff;
+            border-radius: 5px;
+        }
+        .calculator-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        .calculator-btn {
+            padding: 15px;
+            font-size: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid #00ffff;
+            color: #00ffff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .calculator-btn:hover {
+            background: rgba(0, 255, 255, 0.2);
+        }
+        .operator-btn {
+            color: #ff00ff;
+            border-color: #ff00ff;
+        }
+        .equals-btn {
+            color: #00ff00;
+            border-color: #00ff00;
+        }
+        .clear-btn {
+            color: #ff0000;
+            border-color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="pc-header">
+            <h1 class="glow-text">EitoSystems</h1>
+            <nav class="pc-nav">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="links.html">Links</a></li>
+                    <li><a href="score.html">Score</a></li>
+                    <li><a href="downloader.html">Downloader</a></li>
+                    <li><a href="webbar.html">WebBar</a></li>
+                    <li><a href="tool.html">Tool</a></li>
+                    <li><a href="index.html">LogOut</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- スマホ用3点リーダー -->
+        <div class="mobile-menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        
+        <!-- スマホ用メニュー -->
+        <div class="mobile-menu">
+            <div class="mobile-menu-header">
+                <h2>メニュー</h2>
+            </div>
+            <nav class="mobile-nav">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="links.html">Links</a></li>
+                    <li><a href="score.html">Score</a></li>
+                    <li><a href="downloader.html">Downloader</a></li>
+                    <li><a href="webbar.html">WebBar</a></li>
+                    <li><a href="tool.html">Tool</a></li>
+                    <li><a href="index.html">LogOut</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <main>
+            <section class="content-box">
+                <h2 class="glow-text">計算機</h2>
+                <div class="calculator-container">
+                    <input type="text" class="calculator-display" id="display" readonly>
+                    <div class="calculator-buttons">
+                        <button class="calculator-btn clear-btn" onclick="clearDisplay()">C</button>
+                        <button class="calculator-btn" onclick="appendToDisplay('(')">(</button>
+                        <button class="calculator-btn" onclick="appendToDisplay(')')">)</button>
+                        <button class="calculator-btn operator-btn" onclick="appendToDisplay('/')">/</button>
+                        <button class="calculator-btn" onclick="appendToDisplay('7')">7</button>
+                        <button class="calculator-btn" onclick="appendToDisplay('8')">8</button>
+                        <button class="calculator-btn" onclick="appendToDisplay('9')">9</button>
+                        <button class="calculator-btn operator-btn" onclick="appendToDisplay('*')">×</button>
+                        <button class="calculator-btn" onclick="appendToDisplay('4')">4</button>
+                        <button class="calculator-btn" onclick="appendToDisplay('5')">5</button>
+                        <button class="calculator-btn" onclick="appendToDisplay('6')">6</button>
+                        <button class="calculator-btn operator-btn" onclick="appendToDisplay('-')">-</button>
+                        <button class="calculator-btn" onclick="appendToDisplay('1')">1</button>
+                        <button class="calculator-btn" onclick="appendToDisplay('2')">2</button>
+                        <button class="calculator-btn" onclick="appendToDisplay('3')">3</button>
+                        <button class="calculator-btn operator-btn" onclick="appendToDisplay('+')">+</button>
+                        <button class="calculator-btn" onclick="appendToDisplay('0')">0</button>
+                        <button class="calculator-btn" onclick="appendToDisplay('.')">.</button>
+                        <button class="calculator-btn" onclick="backspace()">←</button>
+                        <button class="calculator-btn equals-btn" onclick="calculate()">=</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p class="glow-text">&copy; 2024 EitoSystem Product</p>
+        </footer>
+    </div>
+
+    <script>
+        function appendToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function backspace() {
+            const display = document.getElementById('display');
+            display.value = display.value.slice(0, -1);
+        }
+
+        function calculate() {
+            try {
+                const display = document.getElementById('display');
+                const result = eval(display.value);
+                display.value = result;
+            } catch (error) {
+                document.getElementById('display').value = 'Error';
+            }
+        }
+
+        // スマホ用メニューの開閉機能
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            
+            menuToggle.addEventListener('click', function() {
+                mobileMenu.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html> 

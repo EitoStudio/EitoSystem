@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EitoSystems</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- PC用ヘッダー -->
+        <header class="pc-header">
+            <h1 class="glow-text">EitoSystems</h1>
+            <nav class="pc-nav">
+                <ul>
+                    <li><a href="home.html" class="active">Home</a></li>
+                    <li><a href="links.html">Links</a></li>
+                    <li><a href="score.html">Score</a></li>
+                    <li><a href="downloader.html">Downloader</a></li>
+                    <li><a href="webbar.html">WebBar</a></li>
+                    <li><a href="tool.html">Tool</a></li>
+                    <li><a href="index.html">LogOut</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <!-- スマホ用3点リーダー -->
+        <div class="mobile-menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        
+        <!-- スマホ用メニュー -->
+        <div class="mobile-menu">
+            <div class="mobile-menu-header">
+                <h2>メニュー</h2>
+            </div>
+            <nav class="mobile-nav">
+                <ul>
+                    <li><a href="home.html" class="active">Home</a></li>
+                    <li><a href="links.html">Links</a></li>
+                    <li><a href="score.html">Score</a></li>
+                    <li><a href="downloader.html">Downloader</a></li>
+                    <li><a href="webbar.html">WebBar</a></li>
+                    <li><a href="tool.html">Tool</a></li>
+                    <li><a href="index.html">LogOut</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <main>
+            <div class="profile-box">
+                <h2 class="glow-text">EitoSystems</h2>
+            </div>
+            
+            <section class="news-section">
+                <div class="news-loading">
+                    <i class="fas fa-spinner"></i> ニュースを読み込み中...
+                </div>
+                <div class="news-list">
+                    <!-- ニュース項目がここに動的に追加されます -->
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p class="glow-text">&copy; 2024 EitoSystem Product</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+    <script src="news.js"></script>
+</body>
+</html> 

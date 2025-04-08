@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tool - EitoSystems</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .tool-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .tool-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+            text-decoration: none;
+            color: #00ffff;
+            transition: all 0.3s;
+            border: 1px solid #00ffff;
+        }
+        .tool-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.5);
+            background: rgba(0, 0, 0, 0.7);
+        }
+        .tool-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+        .tool-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #00ffff;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+        }
+        .tool-description {
+            font-size: 16px;
+            text-align: center;
+            color: #ffffff;
+        }
+        @media (max-width: 768px) {
+            .tool-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* ヘッダーの装飾 */
+        .pc-header {
+            position: relative;
+            padding: 20px 0;
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6));
+            border-bottom: 2px solid #00ffff;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            overflow: hidden;
+        }
+        
+        .pc-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 10px,
+                rgba(0, 255, 255, 0.05) 10px,
+                rgba(0, 255, 255, 0.05) 20px
+            );
+            pointer-events: none;
+        }
+        
+        .pc-header h1 {
+            font-size: 36px;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, #00ffff, #00aaff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px rgba(0, 255, 255, 0.7),
+                             0 0 20px rgba(0, 255, 255, 0.5),
+                             0 0 30px rgba(0, 255, 255, 0.3);
+            }
+            to {
+                text-shadow: 0 0 15px rgba(0, 255, 255, 0.8),
+                             0 0 25px rgba(0, 255, 255, 0.6),
+                             0 0 35px rgba(0, 255, 255, 0.4);
+            }
+        }
+        
+        .pc-nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        
+        .pc-nav a {
+            position: relative;
+            padding: 8px 15px;
+            color: #00ffff;
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border-radius: 4px;
+            background: transparent;
+            border: none;
+        }
+        
+        .pc-nav a:hover {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            transform: translateY(-2px);
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.8), 0 0 15px rgba(0, 255, 255, 0.6);
+        }
+        
+        .pc-nav a.active {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            font-weight: bold;
+            color: #00ffff;
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.8), 0 0 15px rgba(0, 255, 255, 0.6);
+        }
+        
+        .pc-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ffff, transparent);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+        }
+        
+        .pc-nav a:hover::after {
+            transform: scaleX(1);
+        }
+        
+        .pc-nav a.active::after {
+            transform: scaleX(1);
+            background: linear-gradient(90deg, transparent, #00ffff, transparent);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- PC用ヘッダー -->
+        <header class="pc-header">
+            <h1 class="glow-text">EitoSystems</h1>
+            <nav class="pc-nav">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="links.html">Links</a></li>
+                    <li><a href="score.html">Score</a></li>
+                    <li><a href="downloader.html">Downloader</a></li>
+                    <li><a href="webbar.html">WebBar</a></li>
+                    <li><a href="tool.html" class="active">Tool</a></li>
+                    <li><a href="index.html">LogOut</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- スマホ用メニュー -->
+        <button class="mobile-menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="mobile-menu">
+            <div class="mobile-menu-header">
+                <h2>メニュー</h2>
+            </div>
+            <nav class="mobile-nav">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="links.html">Links</a></li>
+                    <li><a href="score.html">Score</a></li>
+                    <li><a href="downloader.html">Downloader</a></li>
+                    <li><a href="webbar.html">WebBar</a></li>
+                    <li><a href="tool.html" class="active">Tool</a></li>
+                    <li><a href="index.html">LogOut</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- メインコンテンツ -->
+        <main>
+            <section class="content-box">
+                <h2>Tool</h2>
+                <div class="tool-container">
+                    <a href="calculator.html" class="tool-item">
+                        <div class="tool-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <h3 class="tool-title">計算機</h3>
+                        <p class="tool-description">簡単な計算を行うツール</p>
+                    </a>
+                    <a href="clock.html" class="tool-item">
+                        <div class="tool-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3 class="tool-title">デジタル時計</h3>
+                        <p class="tool-description">デジタルで時間を表示</p>
+                    </a>
+                    <a href="counter.html" class="tool-item">
+                        <div class="tool-icon">
+                            <i class="fas fa-hashtag"></i>
+                        </div>
+                        <h3 class="tool-title">カウンター</h3>
+                        <p class="tool-description">カウントアップ・ダウンを記録</p>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p class="glow-text">&copy; 2024 EitoSystem Product</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

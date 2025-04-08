@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>カウンター - EitoSystems</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .counter-container {
+            max-width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+            text-align: center;
+        }
+        .counter-display {
+            font-size: 48px;
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            margin: 20px 0;
+        }
+        .counter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .counter-btn {
+            padding: 15px 30px;
+            font-size: 24px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid #00ffff;
+            color: #00ffff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .counter-btn:hover {
+            background: rgba(0, 255, 255, 0.2);
+        }
+        .reset-btn {
+            color: #ff0000;
+            border-color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="pc-header">
+            <h1 class="glow-text">EitoSystems</h1>
+            <nav class="pc-nav">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="links.html">Links</a></li>
+                    <li><a href="score.html">Score</a></li>
+                    <li><a href="downloader.html">Downloader</a></li>
+                    <li><a href="webbar.html">WebBar</a></li>
+                    <li><a href="tool.html">Tool</a></li>
+                    <li><a href="index.html">LogOut</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- スマホ用3点リーダー -->
+        <div class="mobile-menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        
+        <!-- スマホ用メニュー -->
+        <div class="mobile-menu">
+            <div class="mobile-menu-header">
+                <h2>メニュー</h2>
+            </div>
+            <nav class="mobile-nav">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="links.html">Links</a></li>
+                    <li><a href="score.html">Score</a></li>
+                    <li><a href="downloader.html">Downloader</a></li>
+                    <li><a href="webbar.html">WebBar</a></li>
+                    <li><a href="tool.html">Tool</a></li>
+                    <li><a href="index.html">LogOut</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <main>
+            <section class="content-box">
+                <h2 class="glow-text">カウンター</h2>
+                <div class="counter-container">
+                    <div class="counter-display" id="counter">0</div>
+                    <div class="counter-buttons">
+                        <button class="counter-btn" onclick="decrement()">-</button>
+                        <button class="counter-btn reset-btn" onclick="reset()">Reset</button>
+                        <button class="counter-btn" onclick="increment()">+</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p class="glow-text">&copy; 2024 EitoSystem Product</p>
+        </footer>
+    </div>
+
+    <script>
+        let count = 0;
+
+        function updateDisplay() {
+            document.getElementById('counter').textContent = count;
+        }
+
+        function increment() {
+            count++;
+            updateDisplay();
+        }
+
+        function decrement() {
+            count--;
+            updateDisplay();
+        }
+
+        function reset() {
+            count = 0;
+            updateDisplay();
+        }
+
+        // スマホ用メニューの開閉機能
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            
+            menuToggle.addEventListener('click', function() {
+                mobileMenu.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html> 

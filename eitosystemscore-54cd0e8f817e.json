@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "eitosystemscore",
+  "private_key_id": "54cd0e8f817e8a9a8534fad429607dcef1c35b68",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDXbjW2/u3VJCWH\nqEtjyfbIUt0EX0wpTlOSbKwI2jeAGc8fmIDs6HL4PZpuRZuO3NxsIHspgPaGt9mO\nMk9e/eg9/zMVkWujr6PYcRTzFlpNx6O8vWvIrB6LAGTsWH/2JHV7SnLTvveHVBOS\n77CuuokhuxkAzRVVUgxUW64LirMy7eoEwqevglUppgnB2uNv3c+Fu54pwKtONYVG\nUHneK5CDkW3fZuIe/55BEjangaIH4Mta4vGYRRAgUd1oBu3NSOrdo+RzD3YdFh9X\ngXyemClhB2baUmbcvmVB2YE4TQ7KY9EuLtfolWXcTQTChhrUV4jXFHn9kjHMg/yX\nDLpTOYutAgMBAAECggEAD1KSFNH3reaZmhco8Dq33XJcsKhBN9mPrXp37KlDXqPM\noj1WmNhvqk23Y4slOqQQNCCbTKMU5cAYg+SlgJF5U0TeJ/U6krSLaCRNjnyohPUO\nJakotr0x7vENkeyO2BL/yCUjcFbE2aXr6SeN3t+loUs4HAvPg0yyqSKxiQtJyPVs\nUh/ze2miWg+l8WXivzrKdnnib5SQuBFoNvGFd9U5fRz1SKFg0hH8mefvcSXVudUF\nbFNzWP8Ux02V29Ser9yA/QgJEN6eAtAAZ74Q8dSCSZd9KaH/OxJkQ3YhSK55/cua\nhldSTW3ENW2WhrfSP+blrtOveSzDMUBIn6ER/Z5QgQKBgQDr59xPPiCA2yXqDEOo\ni0gPdQxxvyMG0NG9kgxTZAePQsVDBCur3M1xHhMaDCkpj8IoKIkdAUFy0wo21+bG\n5cWstksLKkQuqZepzN/4PMZV2EqSY3teaEkTlY4YkXZYC5TeH2mgO2E1u+YDriN9\nsG2mpsSXc+6s/bJ9EJWjEpZCHwKBgQDpx95sB4Ir+b2iSbzJjNksE/XcOebaRsre\nF5zOF24JnndiyZV+asF6+396IX/tpmT50qtGubyPekHyyYuoH23QYELWvrTJbEfN\nR+6pAEZ4QHBNqnAHcbunLE8/tcpD1oT5Gheino4FL9PlBF26TLYGfNT1KcWyBkeV\nNIFA6sywswKBgG7GA2eabrzTKyyJ8cNVE9NeTSekbxgmOjbgO7V0xS/6VJKxhKhB\nGJ9DVgjnKPUBMlSVJD1gd5EplCRIoW9IOdhuCTMG99lJfZQYRhtUvnVVCT9QQ4AD\nTD1L/tt+gqm5VoAvE/RPrcgDoXCc9sFwdSzKJopPwAWvY37iqMFYWwJVAoGAMHTN\nFXc49AR/2fOOvfgDy68Xdt5Ji1TBF+etCMqydCv0cvV1lw5prCQU+CuZaJjktSOF\nfNNi0hp1MO21lNNu35IUSI6eymE3QMV4Im98K9Cvdmmtbt2UF8KHap0zn3wHc9qE\nq6BRr6GKOh39j2/3CsE1ItvVrmC+1Z5cbCg+5SECgYBbPCFmLL0jaJF+n2clw8Jc\nFU1g69VJy4O10aEweOjppxf6tN1ii1UZr7lbcx3fjKLNTJCPhV1wdwwFLI9SsdYu\nLrd8ExcsrXumDN3Keaa0hf7IpUGQGb+1++6brmphD3K6KLtpzTxQiZfRtdPHNdVo\nCcGVjfqtS+unGhhqRBMq+A==\n-----END PRIVATE KEY-----\n",
+  "client_email": "eitosystems@eitosystemscore.iam.gserviceaccount.com",
+  "client_id": "112181275437523514375",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/eitosystems%40eitosystemscore.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
