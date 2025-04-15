@@ -99,7 +99,9 @@
 </head>
 <body>
     <div class="container">
-        <audio id="bgm" src="1.mp3" loop></audio>
+        <audio id="bgm" src="1.mp3"></audio>
+        <audio id="success-sound" src="2.mp3"></audio>
+        <audio id="error-sound" src="3.mp3"></audio>
         <main>
             <div class="login-container">
                 <h2 class="login-title">Login</h2>
@@ -137,6 +139,16 @@
             const passwordToggle = document.getElementById('password-toggle');
             const passwordInput = document.getElementById('password');
             
+            // すべての音声を停止する関数
+            function stopAllSounds() {
+                const sounds = ['bgm', 'success-sound', 'error-sound'];
+                sounds.forEach(id => {
+                    const sound = document.getElementById(id);
+                    sound.pause();
+                    sound.currentTime = 0;
+                });
+            }
+            
             // パスワード表示切り替え機能
             passwordToggle.addEventListener('click', function() {
                 const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
@@ -148,10 +160,14 @@
                 icon.classList.toggle('fa-eye-slash');
             });
             
-            // BGMを自動再生
-            const bgm = document.getElementById('bgm');
-            bgm.play().catch(error => {
-                console.log('自動再生がブロックされました:', error);
+            // ユーザー名入力欄をクリックしたときにBGMを再生
+            const usernameInput = document.getElementById('username');
+            usernameInput.addEventListener('click', function() {
+                stopAllSounds();
+                const bgm = document.getElementById('bgm');
+                bgm.play().catch(error => {
+                    console.log('再生がブロックされました:', error);
+                });
             });
             
             loginForm.addEventListener('submit', function(e) {
@@ -166,14 +182,31 @@
                     errorMessage.style.display = 'none';
                     successMessage.style.display = 'block';
                     
-                    // 2秒後にhome.htmlにリダイレクト
-                    setTimeout(function() {
-                        window.location.href = 'home.html';
-                    }, 2000);
+                    // 2.mp3を再生し、再生が終わったらhome.htmlにリダイレクト
+                    stopAllSounds();
+                    const successSound = document.getElementById('success-sound');
+                    successSound.play().then(() => {
+                        successSound.onended = function() {
+                            window.location.href = 'home.html';
+                        };
+                    }).catch(error => {
+                        console.log('再生がブロックされました:', error);
+                        // 再生がブロックされた場合は2秒後にリダイレクト
+                        setTimeout(function() {
+                            window.location.href = 'home.html';
+                        }, 2000);
+                    });
                 } else {
                     // エラーメッセージを表示
                     successMessage.style.display = 'none';
                     errorMessage.style.display = 'block';
+                    
+                    // 3.mp3を再生
+                    stopAllSounds();
+                    const errorSound = document.getElementById('error-sound');
+                    errorSound.play().catch(error => {
+                        console.log('再生がブロックされました:', error);
+                    });
                 }
             });
         });
