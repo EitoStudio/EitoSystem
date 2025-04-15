@@ -99,6 +99,7 @@
 </head>
 <body>
     <div class="container">
+        <audio id="bgm" src="1.mp3" loop></audio>
         <main>
             <div class="login-container">
                 <h2 class="login-title">Login</h2>
@@ -145,6 +146,12 @@
                 const icon = this.querySelector('i');
                 icon.classList.toggle('fa-eye');
                 icon.classList.toggle('fa-eye-slash');
+            });
+            
+            // BGMを自動再生
+            const bgm = document.getElementById('bgm');
+            bgm.play().catch(error => {
+                console.log('自動再生がブロックされました:', error);
             });
             
             loginForm.addEventListener('submit', function(e) {
